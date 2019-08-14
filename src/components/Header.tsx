@@ -2,11 +2,10 @@ import React from 'react'
 import styled from '@emotion/styled'
 import { css } from '@emotion/core'
 import { Link } from 'gatsby'
-import { LunrSearch } from './LunrSearch'
 
 const style = {
   container: css`
-    background: #ff5700;
+    background: #ffffff;
     margin-bottom: 1.45rem;
   `,
   wrapper: css`
@@ -18,13 +17,14 @@ const style = {
     padding: 1.45rem 1.0875rem;
   `,
   title: css`
+    color: '#ff0000';
     margin: 0;
     display: inline-block;
   `
 }
 
 const TitleLink = styled(Link)`
-  color: #fff;
+  color: #000000;
 
   &:active,
   &:hover {
@@ -42,7 +42,6 @@ export const Header = ({ title }: HeaderProps) => (
       <h1 css={style.title}>
         <TitleLink to="/">{title}</TitleLink>
       </h1>
-      <LunrSearch limit={10} />
     </div>
   </div>
 )

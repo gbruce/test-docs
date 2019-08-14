@@ -3,11 +3,11 @@ import gray from 'gray-percentage'
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'
 
 const typography = new Typography({
-  baseFontSize: '20px',
+  baseFontSize: '14px',
   baseLineHeight: 1.45,
   blockMarginBottom: 0.8,
   headerFontFamily: ['Montserrat', 'sans-serif'],
-  bodyFontFamily: ['Domine', 'serif'],
+  bodyFontFamily: ['Roboto-Regular'],
   bodyColor: gray(10),
   headerWeight: 600,
   bodyWeight: 300,
@@ -17,7 +17,7 @@ const typography = new Typography({
       lineHeight: 1.2
     },
     a: {
-      color: '#ff5700',
+      color: '#267CB9',
       textDecoration: 'none'
     },
     'a:hover, a:active': {

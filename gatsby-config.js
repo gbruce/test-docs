@@ -29,8 +29,9 @@ const gatsbyRemarkPlugins = [
 ]
 
 module.exports = {
+  pathPrefix: "/test-docs",
   siteMetadata: {
-    title: 'TypeScript Gatsby Starter',
+    title: 'Showcase Embed SDK',
     author: 'Luís Rodrigues',
     description: 'A Gatsby starter using TypeScript.',
     siteUrl: 'https://goblindegook-gatsby-starter-typescript.netlify.com'
