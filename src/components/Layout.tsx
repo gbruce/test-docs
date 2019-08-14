@@ -60,22 +60,22 @@ export const Layout = ({ children }: LayoutProps) => (
         <Header title={data.site.siteMetadata.title} />
         <div css={SideBar}>
           <p>
-            <Link to={`/single-page/`} activeClassName="active">
+            <Link to={`/`} activeClassName="active">
               Home
             </Link>
           </p>
           <p>
-            <Link to={`/single-page/`} activeClassName="active">
+            <Link to={`/content/vocabulary`} activeClassName="active">
               Vocabulary
             </Link>
           </p>
           <p>
-            <Link to={`/single-page/`} activeClassName="active">
+            <Link to={`/content/concepts`} activeClassName="active">
               Concepts
             </Link>
           </p>
           <p>
-            <Link to={`/single-page/`} activeClassName="active">
+            <Link to={`/content/installation/`} activeClassName="active">
               Installation
             </Link>
           </p>
@@ -87,6 +87,11 @@ export const Layout = ({ children }: LayoutProps) => (
           <p>
             <Link to={`/single-page/`} activeClassName="active">
               Examples
+            </Link>
+          </p>
+          <p>
+            <Link to={`/content/changelog`} activeClassName="active">
+              Changelog
             </Link>
           </p>
           <p>
