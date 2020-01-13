@@ -24,8 +24,8 @@ description: Developer Documentation
 # baseurl: "/pages/matterport/showcase-sdk-site-preview/"
 # url: "https://ghe.matterport.com"
 
-baseurl: "/pages/matterport/showcase-sdk-site-preview/"
-url: "https://ghe.matterport.com"
+baseurl: "/test-docs/"
+url: "https://gbruce.github.io"
 
 permalink: pretty
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
