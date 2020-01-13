@@ -1,7 +1,7 @@
 ---
 layout: protected
 title: Example protected page
-password: gOJKDpxNiMCtdlnXs
+password: test
 nav_exclude: true
 search_exclude: true
 ---
