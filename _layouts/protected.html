@@ -1,0 +1,79 @@
+---
+layout: default
+nav_exclude: true
+---
+
+
+<form id="content">
+  Enter password
+  <input id="password" type="password">
+  <button id="button">Submit</button>
+  <p id="errmsg" style="color: red;"></p>
+</form>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.min.js" integrity="sha256-u6BamZiW5tCemje2nrteKC2KoLIKX9lKPSpvCkOhamw=" crossorigin="anonymous"></script>
+<script>
+  function decrypt(password, displayError, savetoLocal) {
+    console.log(`decrypt ${password}`);
+    var protectedContent = "{{ page.protected_content }}";
+
+    var payload = protectedContent.split("|");
+    var iv = payload[0];
+    var hmac = payload[1];
+    var cipherText = payload[2];
+
+    var passphraseDgst = CryptoJS.SHA256(password).toString();
+    var decryptedhmac = CryptoJS.HmacSHA256(cipherText, CryptoJS.enc.Hex.parse(passphraseDgst)).toString().trim();
+
+
+    if(CryptoJS.enc.Base64.parse(hmac).toString() === decryptedhmac){
+      if (savetoLocal) {
+        var object = {
+          value: password,
+          expires: Date.now() + (4*60*60) * 1000
+        };
+
+        window.localStorage.setItem("sdk-cache", JSON.stringify(object));
+      }
+
+      var decrypted = CryptoJS.AES.decrypt(
+        {ciphertext:CryptoJS.enc.Base64.parse(cipherText)},
+        CryptoJS.enc.Hex.parse(passphraseDgst),
+        {iv:CryptoJS.enc.Base64.parse(iv)}
+      );
+      var content = CryptoJS.enc.Utf8.stringify(decrypted);
+      document.getElementById("content").innerHTML = content;
+    } else {
+      if (displayError) {
+        document.getElementById("errmsg").innerHTML = "Wrong password";
+      }
+    }
+  }
+
+  var value = window.localStorage.getItem("sdk-cache");
+  if (value) {
+    var parsed = JSON.parse(value);
+    if (parsed.expires > Date.now()) {
+      decrypt(parsed.value, false, false);
+    }
+  }
+
+  var passwordInput = document.getElementById("password");
+  if (passwordInput) {
+    passwordInput.addEventListener("keyup", function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        decrypt(passwordInput.value, true, true);
+      }
+    });
+  }
+
+  var button = document.getElementById('button');
+  if (button) {
+    button.onclick = function(event) {
+      decrypt(passwordInput.value, true, true);
+    };
+  }
+  
+</script>
