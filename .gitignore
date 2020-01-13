@@ -1,0 +1,6 @@
+.sass-cache
+_site
+_protected-cache
+Gemfile.lock
+node_modules
+.DS_Store
